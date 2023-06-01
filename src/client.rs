@@ -81,8 +81,8 @@ impl AsyncSocket {
 
     fn create_socket(config: &Config) -> io::Result<(SockType, Socket)> {
         let (domain, proto) = match config.kind {
-            ICMP::V4 => (Domain::IPV4, Some(Protocol::ICMPV4)),
-            ICMP::V6 => (Domain::IPV6, Some(Protocol::ICMPV6)),
+            ICMP::V4 => (Domain::IPV4, Some(Protocol::UDP)),
+            ICMP::V6 => (Domain::IPV6, Some(Protocol::UDP)),
         };
 
         match Socket::new(domain, config.sock_type_hint, proto) {
